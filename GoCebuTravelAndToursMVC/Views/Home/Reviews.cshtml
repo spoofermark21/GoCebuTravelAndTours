@@ -1,0 +1,103 @@
+﻿@model IEnumerable<GoCebuTravelAndToursMVC.Review>
+
+
+<div id="review" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.ToList().Count > 0)
+            {
+
+                <h3 style="text-align:center;">Reviews from our Guest</h3>
+                <hr />
+                <div id="review-carousel" class="carousel carousel-review slide" data-ride="carousel">
+                    <ol class="carousel-indicators carousel-review-indicators">
+                        <li data-target="#review-carousel" data-slide-to="0" class="active"></li>
+                        @if (Model != null)
+                        {
+                            int i = 1;
+                            foreach (var item in Model)
+                            {
+                                <li data-target="##eview-carousel" data-slide-to="@i" class=""></li>
+                                i++;
+                            }
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        @{
+                            var isActive = "active";
+                        }
+
+                        @foreach (var review in Model)
+                        {
+                            <div class="item carousel-review-item carousel-item @isActive">
+                                <div class="img-box"><img src="~/Content/Img/reviews/@review.ImgFileName" alt=""></div>
+                                <p class="testimonial">@review.Review1</p>
+                                <p class="overview">
+                                    <b>@review.Name</b>
+                                    @if (review.ReviewLink == "facebook")
+                                    {
+                                        <a href="https://www.facebook.com/pg/GoCebuTravelandTours/reviews/" target="_blank">Facebook Review</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" target="_blank">Google Review</a>
+                                    }
+
+                                </p>
+                                <div>
+                                    @{
+                                        //switch than loop
+                                        switch (review.Ratings)
+                                        {
+                                            //&#9733;
+                                            case 1:
+                                                <span class="fa fa-star "></span>
+                                                break;
+                                            case 2:
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                break;
+                                            case 3:
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                break;
+                                            case 4:
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                break;
+                                            case 5:
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                <span class="fa fa-star "></span>
+                                                break;
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                            isActive = "";
+                        }
+
+
+                    </div>
+                    <a class="carousel-control left carousel-control-prev" href="#review-carousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="carousel-control right carousel-control-next" href="#review-carousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,191 @@
+﻿@model GoCebuTravelAndToursMVC.Models.TourPackageViewModel
+
+
+@{
+    ViewBag.Title = "Thank you";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container body-margin" style="padding-top: 50px;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1>Thank you @Model.BookingViewModel.GuestName for booking with us!</h1> <br />
+
+                <p>Booking Reference Number: <span style="font-weight: bold;">@Model.BookingViewModel.Id.ToString().PadLeft(10, '0')</span></p>
+
+                <p>Booking details and payment instruction have been sent to your email address: <span style="font-weight: bold;">@Model.BookingViewModel.EmailAddress</span></p>
+
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Home</a>
+                @*<a href="@Url.Action("ListTourPackages", "Tour", new { groupBy = "All"}, Request.Url.Scheme)" class="btn btn-info ">Browse all tour package</a>*@
+            </div>
+
+
+
+            <div style="overflow: auto;">
+                @if (Model.BookingViewModel.PaymentOptions == "banktransfer")
+                {
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Bank </th>
+                                <th>Account Name </th>
+                                <th>Account Number</th>
+                                <th>Swift Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Bank of Philippine Island (BPI)
+                                </td>
+                                <td>
+                                    9096265259
+                                </td>
+                                <td>
+                                    Marvin Sibi
+                                </td>
+                                <td>
+                                    BOPIPHMM
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    EastWest Bank
+                                </td>
+                                <td>
+                                    200011706467
+                                </td>
+                                <td>
+                                    Marvin Sibi
+                                </td>
+                                <td>
+                                    EWBCPHMM
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Security Bank
+                                </td>
+                                <td>
+                                    0000025003701
+                                </td>
+                                <td>
+                                    GoCebu Travel and Tours
+                                </td>
+                                <td>
+                                    SETCPHMM
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    * Swift code use for international bank to bank transfer.
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                }
+                else if (Model.BookingViewModel.PaymentOptions == "creditcard")
+                {
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Credit Card payment instruction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4">
+                                    * Credit Card via PayPal with 6% transaction fee *<br />
+                                    Step 1: Go Cebu will send an electronic invoice to your provided email.<br />
+                                    Step 2: Click on 'Pay now' in the email or invoice you've received.<br />
+                                    Step 3: Enter your credit or debit card details.<br />
+                                    Step 4: Confirm the payment.<br />
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                }
+                else if(Model.BookingViewModel.PaymentOptions == "moneytransfer")
+                {
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Receiver</th>
+                                <th>Contact Number</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Marvin Sibi
+                                </td>
+                                <td>
+                                    Globe : +639173056635<br />
+                                    Smart : +639396071412
+                                </td>
+                                <td>
+                                    Plaridel Street, Zone Camanse, Paknaan
+                                    Mandaue City
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                }
+
+                <p>Send us an email to <span class="text-info">bookings@gocebutour.com</span> or through <a href="https://www.messenger.com/t/GoCebuTravelandTours" target="_blank">messenger</a> with the screenshot/picture of the payment receipt.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    @*<div class="row">
+            <div class="col-md-12" style="text-align: justify;">
+
+                <h3>TERMS AND CONDITIONS</h3>
+                <p>
+                    <br />
+                    BOOKING CHANGES<br />
+                    • Cancellation received less than 7 days prior to tour date, 50% of the downpayment will be refunded.<br />
+                    • Cancellation received less than 72 hours prior to tour date, downpayment will not be refunded.<br />
+                    • For instances of cancellation or “no-show”, Guests are still liable to settle balance and full amount of package.<br />
+                    • Refund minus any charges we incur i.e administrative fees, bank fees, transfer fees, accommodation & etc.<br />
+                    • Refunds will be process within 14 working days.<br />
+                    <br />
+                    ACCOMMODATION<br />
+                    • NO REFUND for the accommodation shall be given for any changes or cancellation received once booking is confirmed.<br />
+                    • Guests are still responsible to follow hotel policies.<br />
+                    • Issues or complaints concerning the hotel / accommodation must be directed to hotel’s representative for proper assistance.<br />
+                    <br />
+                    FITNESS<br />
+                    • All tour participants must be in good physical and mental condition to join all activities specified in the tour package.<br />
+                    • All clients must attend briefing / orientation and a signed waiver must be furnished before the start of activity.<br />
+                    <br />
+                    GO CEBU TRAVEL & TOURS has the right to change and/or cancel itineraries without prior notice to ensure safety and better service. Likewise, the agency, and all persons representing GO CEBU TRAVEL & TOURS shall not be held responsible or liable to issue refund / any form of compensation for failure to execute the above arrangements due to unpredictable nature, inclement weather and other factors that are beyond our control.<br />
+                    <br />
+                    During the journey if someone asks for extra money, you may inform us and we will not be responsible if you pay the amount without our concern.<br />
+                    <br />
+                    By confirming registration and downpayment, GO CEBU TRAVEL & TOURS accepts that client is agreeing to all terms and conditions stated above.<br />
+                    <br />
+                    "We Travel As One"
+                </p>
+
+            </div>
+
+        </div>*@
+</div>
+
+
+<div class="container-fluid">
+    <iframe style="width: 100%; height: 400px;" id="gmap_canvas" src="https://maps.google.com/maps?q=cebu&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+</div>

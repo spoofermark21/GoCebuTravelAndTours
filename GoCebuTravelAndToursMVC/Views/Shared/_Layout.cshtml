@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="lmeiTtrkbe7qS0Y4HeGB24btFBWdr67perwcTSUoH40" />
+    <meta title="Go Cebu Travel and Tours | Cebu Tours | Cebu Traxvel | Affordable Travel and Tours" />
+    <meta name="description" content="Go Cebu Travel and Tours, Go Cebu Travel and Tours is a duly registered business entity aimed at providing fun-filled tour experiences to white sandy beaches, lush mountain resorts, thrilling adventure parks and so much more here in the Queen City of the South!" />
+    <meta name="keywords" content="GoCebu Travel and Tours, Cebu Travel, Cebu Tours, Cebu Travel And Tours Agency, Cebu Affordable Travel and Tours,
+          Cebu Travel Agency, Travel Agency in Cebu, Cebu Tour Package" />
+
+    <title>@ViewBag.Title - Go Cebu Travel And Tours</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.RenderFormat("<script src='{0}' defer></script>", "~/bundles/modernizr")
+
+    <link rel="icon" type="image/png" href="~/Content/img/favicon.ico" sizes="32x32">
+
+    <script>
+        window.onscroll = function () {
+            growShrinkLogo()
+        };
+
+        function growShrinkLogo() {
+            var Logo = document.getElementById("logo")
+            if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+                Logo.style.width = '50%';
+                Logo.style.height = '30%';
+            } else {
+                Logo.style.width = '60%';
+                Logo.style.height = '40%';
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v5.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="138113793486711">
+    </div>
+
+    <header>
+        <nav id="navbar-id" class="navbar navbar-expand-md navbar-light  fixed-top shadow-sm p-3 mb-0 bg-white">
+            <div class="container">
+                <a class="navbar-left" href='@Url.Action("Index", "Home")'>
+                    <img id="logo" src="~/Content/img/gc-logo.png" style="height: 40%; width: 60%;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Day Tour", "ListTourPackages", "Tour", new { groupBy = "Day" }, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" data-target="#navbar-dropdown-menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tour Packages
+                            </a>
+                            <div id="navbar-dropdown-menu" class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("5 Days 4 Nights", "ListTourPackages", "Tour", new { groupBy = "5D4N" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("4 Days 3 Nights", "ListTourPackages", "Tour", new { groupBy = "4D3N" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("3 Days 2 Nights", "ListTourPackages", "Tour", new { groupBy = "3D2N" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("2 Days 1 Night", "ListTourPackages", "Tour", new { groupBy = "2D1N" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Contact Us", "Index", "ContactUs", null, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="https://www.facebook.com/GoCebuTravelandTours/" class="nav-link" target="_blank">Facebook Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="body-margin">
+
+        @RenderBody()
+
+    </div>
+
+    <footer id="footer">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <h5>About Us</h5>
+                    <div style="margin-top: 10px;">
+                        <p>
+                            <strong><i>Go Cebu Travel And Tours</i></strong> is a duly registered business entity aimed at providing fun-filled tour experiences to white sandy beaches, lush mountain resorts, thrilling adventure parks and so much more here in the Queen City of the South!
+                            <br />
+                            <a href="@Url.Action("Index", "ContactUs")">see more</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <h5>Contact Us</h5>
+                    <div style="margin-top: 10px;">
+                        <div class="row" style="text-align: left;">
+                            @*<span style="font-size: 20px; margin-right:10px;">&#9742;</span>*@
+                            <i class="fas fa-phone-alt" style="font-size: 20px; margin-right:10px;"></i>
+                            <p>
+                                Globe : +639173056635 <br />
+                                Smart : +639396071412 <br />
+                                Viber/WhatsApp : 639173056635
+                            </p>
+                        </div>
+                        <div class="row">
+                            <i class="fas fa-envelope" style="font-size: 20px; margin-right:10px;"></i>
+                            @*<span style="font-size: 20px; margin-right:10px;"></span>*@
+                            <p>info@gocebutour.com</p>
+                        </div>
+
+                        <div class="row">
+                            
+                            @*<span style="font-size: 20px; margin-right:10px;"></span>*@
+                            <i class="far fa-clock" style="font-size: 20px; margin-right:10px;"></i>
+                            <p>Monday - Sunday (8am to 10pm)</p>
+                        </div>
+                    </div>
+                    <a href="@Url.Action("Index", "ContactUs")">send us a message</a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <h5>Follow us on social media</h5>
+                    <div style="margin-top: 10px;">
+                        <div class="fb-page"
+                             data-href="https://www.facebook.com/GoCebuTravelandTours/"
+                             data-width="380"
+                             data-hide-cover="false"
+                             data-show-facepile="false"></div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+        </div>
+        <p>&copy; @DateTime.Now.Year - Go Cebu Travel And Tours - Develop by M. Sibi</p>
+        <br />
+    </footer>
+
+    <div tabindex="-1" class="modal fade" id="terms-conditions-footer" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <h4>TERMS AND CONDITIONS</h4>
+                    <p>
+                        <br />
+                        PAYMENT AND RESERVATION <br />
+                        25% minimum down payment of the total package is required to process the reservation through bank deposit, money<br />
+                        transfer or credit card via PayPal with 6% transaction fee.<br />
+                        Once down payment is received, your booking is secured and you will receive a confirmation from us.<br />
+                        Price is guaranteed upon receipt of the down payment.<br />
+                        Remaining balance will be collected upon pickup by our authorize driver, tour coordinator/guide or any representative<br />
+                        from GoCebu Travel and Tours.<br />
+                        Strictly no down payment, no confirmation of booking.<br /><br />
+                        CANCELLATION AND REFUND<br />
+                        If booking cancellation received less than 7 days prior to tour date, 50% of the required down payment will be<br />
+                        refunded. Cancellation received less than 72 hours prior to tour date, required down payment will not be refunded.<br />
+                        In case you have to withdraw from tour after it has started due to some reasons, we regret to inform you that the<br />
+                        unused transport, entrance fees, accommodations and all specified in the package inclusion will not be refunded.<br />
+                        GoCebu Travel and Tours has the right to change and/or cancel itineraries without prior notice to ensure safety and<br />
+                        better service. Likewise, the agency, and all persons representing GoCebu Travel and Tours shall not be held<br />
+                        responsible or liable to issue refund / any form of compensation for failure to execute the travel arrangements due to<br />
+                        health condition, unpredictable nature, inclement weather and other factors that are beyond our control.<br />
+                        Refund minus any charges we incur i.e. 10% administrative fees, bank fees, transfer fees, accommodation & etc.<br />
+                        Refunds will be process within 14 working days.<br /><br />
+                        BOOKING CHANGES<br />
+                        Guest are still liable to settle the full amount of the package for no show/cancellation of other members of the group.<br />
+                        Necessary charges or re-quote may apply for any amendment made to the confirmed reservation or while the tour has<br />
+                        started. Charges incur (i.e. administrative fee, accommodation, transportations & etc.).<br /><br />
+                        PRICE AND DISCOUNT<br />
+                        All rates are fixed at the time of booking and generally practices a “No Hidden Charges.” The only exception will be an<br />
+                        increase in our costs arising as the result of any government action. GoCebu Travel and Tours reserve the right to<br />
+                        change the price for any additional fees that may have incur (i.e. government taxes, hotel surcharges or changes in<br />
+                        rates).<br />
+                        Senior Citizen and/or PWD 5% discounts will apply based on package rate per person. Not applicable for any add-ons<br />
+                        (i.e. GoPro & others stated in the add-ons). Strictly no Senior/PWD I.D., no discount.<br />
+                        ACCOMMODATION<br />
+                        No refund for the accommodation shall be given for any changes or cancellation received once booking is confirmed.<br />
+                        Guests are still responsible to follow hotel policies.<br />
+                        Issues or complaints concerning the hotel / accommodation must be directed to hotel’s representative for proper<br />
+                        assistance.<br /><br />
+                        FITNESS<br />
+                        All tour Guests must be in good physical and mental condition to join all activities specified in the tour package.<br />
+                        All Guests must attend briefing / orientation and a signed waiver must be furnished before the start of activity.<br />
+                        GoCebu Travel and Tours reserves the right to cancel without refund for any member of the group found not<br />
+                        physically fit (i.e. not feeling well, drunk & etc.) while the activity or tour has started.<br />
+                        IMPORTANT NOTICE: During the journey if someone asks for extra money or charges, you may inform us and we will not<br />
+                        be responsible if you pay the amount without our concern.<br /><br />
+                        ACCEPTANCE OF AGREEMENT<br />
+                        By confirming registration and down payment, GOCEBU TRAVEL & TOURS accepts that Guests is agreeing to all terms<br />
+                        and conditions stated above.<br />
+                        "We Travel As One"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    @*@Scripts.RenderFormat("<script src='{0}' defer></script>", "~/bundles/jquery")
+    @Scripts.RenderFormat("<script src='{0}' defer></script>", "~/bundles/bootstrap")
+    @Scripts.RenderFormat("<script src='{0}' defer></script>", "~/bundles/jqueryval")*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+
+
+
+
+</body>
+</html>

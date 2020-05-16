@@ -1,0 +1,608 @@
+﻿@media (min-width: 1080px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+textarea {
+    border: 1px solid #999999;
+    width: 100%;
+    margin: 5px 0;
+    padding: 3px;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 959px) {
+}
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+}
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+}
+
+* {
+    font-family: 'Calibri', sans-serif;
+}
+
+.row {
+    overflow: hidden;
+}
+
+[class*="col-"] {
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+body {
+    background-color: white;
+    padding-top: 90px;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+p {
+    font-size: 15px;
+}
+
+@media (min-width: 400px) {
+    .carousel-title {
+        font-size: 24px !important;
+    }
+
+    .carousel-p {
+        font-size: 0px;
+    }
+
+    .carousel-btn {
+    }
+}
+
+@media (min-width: 600px) {
+    .carousel-title {
+        font-size: 24px !important;
+    }
+
+    .carousel-btn {
+    }
+}
+
+@media (min-width: 800px) {
+    .carousel-title {
+        font-size: 30px !important;
+    }
+
+    .carousel-btn {
+    }
+}
+
+@media (min-width: 1000px) {
+    .carousel-title {
+        font-size: 36px !important;
+    }
+
+    .carousel-btn {
+    }
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+
+
+.rounded-btn {
+    border-radius: 40px;
+}
+
+/*Navbar*/
+.navbar {
+}
+
+.nav-link {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-background {
+    background-color: #83b0d8;
+}
+
+.dropdown-menu {
+    background-color: #fff;
+}
+
+#logo {
+    transition: 0.2s;
+}
+
+
+/*carousel*/
+
+#indicators {
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.carousel-lay-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+.carousel-p {
+    font-size: 16px;
+}
+
+.item.next .carousel-caption {
+    opacity: 0;
+}
+
+.carousel-caption {
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.carousel-img {
+    width: 100%;
+    /*height: 700px !important;*/
+}
+
+.carousel-lay-inner {
+    /*width: 100*/  
+    /*height: 700px !important;*/
+}
+
+.carousel-review {
+    height: 100% !important;
+}
+
+
+.carousel-hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+}
+
+
+/*Jumbotron*/
+
+
+.jumbotron {
+    text-align: center;
+    border: 0px !important;
+    /*transition: box-shadow .3s;*/
+}
+
+    .jumbotron:hover, .jumbotron:active{
+        box-shadow: 0 0 9px rgba(33,33,33,.4) !important;
+    }
+
+.jumbotron-photo {
+    border: 0px !important;
+}
+/*Container-fluid*/
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.container-custom {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/*List Tour Package*/
+
+
+
+.search-form {
+}
+
+.search-hr {
+    margin-bottom: 0px !important;
+}
+
+.reservation-header {
+    /*padding: 10px;*/
+    font-size: 28px;
+    text-align: center;
+}
+
+.as-low-as {
+    font-size: 16px !important;
+}
+
+#list-tour-package {
+    padding-top: 20px;
+}
+
+.list-tour-packages {
+    padding-top: 15px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+
+#tour-package {
+    padding-top: 40px;
+}
+
+.tour-packages {
+    padding: 2px !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+.tour packages card-body {
+    text-align: justify;
+}
+
+
+.header-tour-package {
+    margin-top: 10px !important;
+}
+
+
+.reservation-form {
+    border: 10px solid black;
+}
+
+/*Tour Package Details*/
+#img-package {
+    margin-top: 20px;
+    border: none !important;
+}
+
+.btn-details {
+    margin-bottom: 10px;
+}
+
+.tour-package {
+    margin-top: 50px;
+}
+
+.package-title {
+    font-size: 25px !important;
+}
+
+.package-description {
+    font-size: 14px !important;
+    text-align: center;
+}
+
+
+
+#booking-form {
+}
+
+
+.admin {
+    margin-top: 20px;
+}
+
+.admin-list {
+    margin-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+
+table {
+    font-size: 15px !important;
+}
+
+/*Confirmation*/
+.confirmation {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#note-downpayment {
+    font-size: 12px !important;
+}
+
+/*Input*/
+input,
+select,
+textarea .admin-field {
+    max-width: 100%;
+}
+
+
+/*Reviews*/
+
+#review {
+    margin-bottom: 0px;
+}
+
+.reviews p {
+    text-align: justify;
+}
+
+
+/*Tour Package*/
+
+
+/*Booking*/
+
+#booking-form {
+    margin-top: 10px;
+}
+
+/*Design*/
+
+
+i {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/*Confirmation*/
+td {
+    padding: 10px;
+}
+
+.form-group.required .control-label:after {
+    content: "*";
+    color: red;
+}
+
+.form-group{
+    margin-bottom: 5px !important;
+}
+
+/*About us*/
+#about-us {
+    text-align: justify;
+}
+
+/*Contact Us*/
+
+#map {
+}
+
+#map-home {
+    margin-top: 5px;
+}
+
+#contact-us {
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+/*Carousel Review*/
+
+.carousel-review {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+    .carousel-review .item {
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        overflow: hidden;
+        min-height: 340px;
+    }
+
+        .carousel-review .item a {
+        }
+
+    .carousel-review .img-box {
+        width: 145px;
+        height: 145px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+        .carousel-review .img-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+        }
+
+    .carousel-review .testimonial {
+        padding: 20px 0 10px;
+    }
+
+    .carousel-review .overview {
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+        .carousel-review .overview b {
+            color: #333;
+            font-size: 20px;
+            text-transform: uppercase;
+            display: block;
+            padding-bottom: 5px;
+        }
+
+    .carousel-review .star-rating i {
+        font-size: 18px;
+        color: #ffdc12;
+    }
+
+    .carousel-review .carousel-control {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #999;
+        text-shadow: none;
+        top: 4px;
+    }
+
+.fa-star {
+    font-size: 18px;
+    color: #ffdc12;
+}
+
+.carousel-control i {
+    font-size: 20px;
+    margin-right: 2px;
+}
+
+.carousel-control.left {
+    left: auto;
+    right: 40px;
+}
+
+.carousel-control.right i {
+    margin-right: -2px;
+}
+
+.carousel .carousel-indicators {
+}
+
+.carousel-review-indicators li, .carousel-indicators li.active {
+}
+
+.carousel-review-indicators li {
+    background: #e2e2e2;
+    border-color: transparent;
+}
+
+    .carousel-review-indicators li.active {
+        border: none;
+        background: #888;
+    }
+
+.btn-carousel {
+    margin-bottom: 10px;
+}
+
+.overview {
+    font-family: 'Poppins', sans-serif;
+}
+
+/*Ribbon*/
+.box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid #BBB;
+    background: #EEE;
+}
+
+.ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: right;
+}
+
+    .ribbon span {
+        font-size: 10px;
+        font-weight: bold;
+        color: #FFF;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 20px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        width: 100px;
+        display: block;
+        background: #79A70A;
+        background: linear-gradient(#2989D8 0%, #2989d8 100%);
+        box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+        position: absolute;
+        top: 19px;
+        right: -21px;
+    }
+
+        .ribbon span::before {
+            content: "";
+            position: absolute;
+            left: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid #2989d8;
+            border-right: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid #2989d8;
+        }
+
+        .ribbon span::after {
+            content: "";
+            position: absolute;
+            right: 0px;
+            top: 100%;
+            z-index: -1;
+            border-left: 3px solid transparent;
+            border-right: 3px solid #2989d8;
+            border-bottom: 3px solid transparent;
+            border-top: 3px solid #2989d8;
+        }
+
+
+footer {
+    color: #000;
+    background-color: #E6E9ED;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+    footer a {
+        /*color: inherit !important;*/
+    }
+
+
+.footer-social-media {
+    margin: auto;
+    max-width: 300px;
+}
+
+.footer-hr {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GoCebuDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourPackageId" Type="int" Nullable="false" />
+          <Property Name="GuestName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FacebookAccount" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BookingStartDate" Type="date" />
+          <Property Name="BookingEndDate" Type="date" />
+          <Property Name="TotalLocalGuest" Type="int" />
+          <Property Name="TotalChildGuest" Type="int" />
+          <Property Name="TotalForeignGuest" Type="int" />
+          <Property Name="DownPaymentAmount" Type="money" />
+          <Property Name="TotalAmount" Type="money" />
+          <Property Name="TotalAddOnsAmount" Type="money" />
+          <Property Name="PickUpLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="DropOffLocation" Type="nvarchar" MaxLength="500" />
+          <Property Name="SpecialRequest" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PaymentDate" Type="date" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentOptions" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Inquiries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="PaymentAmount" Type="int" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Review" Type="nvarchar(max)" />
+          <Property Name="ProfileLink" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ReviewLink" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImgFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ratings" Type="int" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="date" />
+        </EntityType>
+        <EntityType Name="TourBookingAddOns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourBookingId" Type="int" Nullable="false" />
+          <Property Name="TourPackageAddOnsId" Type="int" Nullable="false" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TourGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourPackageId" Type="int" Nullable="false" />
+          <Property Name="ImgFileName" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TourPackageAddOns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourPackageId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="money" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TourPackagePrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourPackageId" Type="int" Nullable="false" />
+          <Property Name="Pax" Type="int" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="GuestType" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaxFlag" Type="bit" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TourPackages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourPackageName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TourPackageDescription" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TourItineraryDetails" Type="nvarchar(max)" />
+          <Property Name="AdditionalDetails" Type="nvarchar" MaxLength="1000" />
+          <Property Name="InclusionDetails" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImgFileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TourDurationInHours" Type="int" />
+          <Property Name="IsSharedFlag" Type="bit" />
+          <Property Name="IsCustomizeFlag" Type="bit" />
+          <Property Name="BestSellerFlag" Type="bit" />
+          <Property Name="ForeignPrice" Type="money" />
+          <Property Name="ExtendedPaxPrice" Type="money" />
+          <Property Name="OrderByDisplay" Type="int" />
+          <Property Name="EnabledFlag" Type="bit" />
+          <Property Name="GroupBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="date" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CaroImgFileName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="GoCebuDBModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inquiries" EntityType="Self.Inquiries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTransaction" EntityType="Self.PaymentTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourBookingAddOns" EntityType="Self.TourBookingAddOns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourGallery" EntityType="Self.TourGallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPackageAddOns" EntityType="Self.TourPackageAddOns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPackagePrice" EntityType="Self.TourPackagePrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPackages" EntityType="Self.TourPackages" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GoCebuDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourPackageId" Type="Int32" Nullable="false" />
+          <Property Name="GuestName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookAccount" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BookingStartDate" Type="DateTime" Precision="0" />
+          <Property Name="BookingEndDate" Type="DateTime" Precision="0" />
+          <Property Name="TotalLocalGuest" Type="Int32" />
+          <Property Name="TotalChildGuest" Type="Int32" />
+          <Property Name="TotalForeignGuest" Type="Int32" />
+          <Property Name="DownPaymentAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalAddOnsAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PickUpLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DropOffLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialRequest" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentOptions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PaymentTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentAmount" Type="Int32" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Review1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ImgFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ratings" Type="Int32" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TourBookingAddOn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourBookingId" Type="Int32" Nullable="false" />
+          <Property Name="TourPackageAddOnsId" Type="Int32" Nullable="false" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TourGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourPackageId" Type="Int32" Nullable="false" />
+          <Property Name="ImgFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TourPackageAddOn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourPackageId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TourPackagePrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourPackageId" Type="Int32" Nullable="false" />
+          <Property Name="Pax" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GuestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaxFlag" Type="Boolean" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TourPackage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourPackageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TourPackageDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TourItineraryDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalDetails" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="InclusionDetails" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ImgFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsSharedFlag" Type="Boolean" />
+          <Property Name="IsCustomizeFlag" Type="Boolean" />
+          <Property Name="BestSellerFlag" Type="Boolean" />
+          <Property Name="ForeignPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExtendedPaxPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OrderByDisplay" Type="Int32" />
+          <Property Name="EnabledFlag" Type="Boolean" />
+          <Property Name="GroupBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TourDurationInHours" Type="Int32" />
+          <Property Name="CaroImgFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="GoCebuDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="PaymentTransactions" EntityType="Self.PaymentTransaction" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <EntitySet Name="TourBookingAddOns" EntityType="Self.TourBookingAddOn" />
+          <EntitySet Name="TourGalleries" EntityType="Self.TourGallery" />
+          <EntitySet Name="TourPackageAddOns" EntityType="Self.TourPackageAddOn" />
+          <EntitySet Name="TourPackagePrices" EntityType="Self.TourPackagePrice" />
+          <EntitySet Name="TourPackages" EntityType="Self.TourPackage" />
+          <EntitySet Name="Inquiries" EntityType="GoCebuDBModel.Inquiry" />
+        </EntityContainer>
+        <EntityType Name="Inquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GoCebuDBModelStoreContainer" CdmEntityContainer="GoCebuDBEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="GoCebuDBModel.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourPackageId" ColumnName="TourPackageId" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FacebookAccount" ColumnName="FacebookAccount" />
+                <ScalarProperty Name="BookingStartDate" ColumnName="BookingStartDate" />
+                <ScalarProperty Name="BookingEndDate" ColumnName="BookingEndDate" />
+                <ScalarProperty Name="TotalLocalGuest" ColumnName="TotalLocalGuest" />
+                <ScalarProperty Name="TotalChildGuest" ColumnName="TotalChildGuest" />
+                <ScalarProperty Name="TotalForeignGuest" ColumnName="TotalForeignGuest" />
+                <ScalarProperty Name="DownPaymentAmount" ColumnName="DownPaymentAmount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="TotalAddOnsAmount" ColumnName="TotalAddOnsAmount" />
+                <ScalarProperty Name="PickUpLocation" ColumnName="PickUpLocation" />
+                <ScalarProperty Name="DropOffLocation" ColumnName="DropOffLocation" />
+                <ScalarProperty Name="SpecialRequest" ColumnName="SpecialRequest" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+                <ScalarProperty Name="PaymentOptions" ColumnName="PaymentOptions" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTransactions">
+            <EntityTypeMapping TypeName="GoCebuDBModel.PaymentTransaction">
+              <MappingFragment StoreEntitySet="PaymentTransaction">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="GoCebuDBModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Review1" ColumnName="Review" />
+                <ScalarProperty Name="ProfileLink" ColumnName="ProfileLink" />
+                <ScalarProperty Name="ReviewLink" ColumnName="ReviewLink" />
+                <ScalarProperty Name="ImgFileName" ColumnName="ImgFileName" />
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourBookingAddOns">
+            <EntityTypeMapping TypeName="GoCebuDBModel.TourBookingAddOn">
+              <MappingFragment StoreEntitySet="TourBookingAddOns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourBookingId" ColumnName="TourBookingId" />
+                <ScalarProperty Name="TourPackageAddOnsId" ColumnName="TourPackageAddOnsId" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourGalleries">
+            <EntityTypeMapping TypeName="GoCebuDBModel.TourGallery">
+              <MappingFragment StoreEntitySet="TourGallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourPackageId" ColumnName="TourPackageId" />
+                <ScalarProperty Name="ImgFileName" ColumnName="ImgFileName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPackageAddOns">
+            <EntityTypeMapping TypeName="GoCebuDBModel.TourPackageAddOn">
+              <MappingFragment StoreEntitySet="TourPackageAddOns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourPackageId" ColumnName="TourPackageId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPackagePrices">
+            <EntityTypeMapping TypeName="GoCebuDBModel.TourPackagePrice">
+              <MappingFragment StoreEntitySet="TourPackagePrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourPackageId" ColumnName="TourPackageId" />
+                <ScalarProperty Name="Pax" ColumnName="Pax" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GuestType" ColumnName="GuestType" />
+                <ScalarProperty Name="MaxFlag" ColumnName="MaxFlag" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPackages">
+            <EntityTypeMapping TypeName="GoCebuDBModel.TourPackage">
+              <MappingFragment StoreEntitySet="TourPackages">
+                <ScalarProperty Name="CaroImgFileName" ColumnName="CaroImgFileName" />
+                <ScalarProperty Name="TourDurationInHours" ColumnName="TourDurationInHours" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TourPackageName" ColumnName="TourPackageName" />
+                <ScalarProperty Name="TourPackageDescription" ColumnName="TourPackageDescription" />
+                <ScalarProperty Name="TourItineraryDetails" ColumnName="TourItineraryDetails" />
+                <ScalarProperty Name="AdditionalDetails" ColumnName="AdditionalDetails" />
+                <ScalarProperty Name="InclusionDetails" ColumnName="InclusionDetails" />
+                <ScalarProperty Name="ImgFileName" ColumnName="ImgFileName" />
+                <ScalarProperty Name="IsSharedFlag" ColumnName="IsSharedFlag" />
+                <ScalarProperty Name="IsCustomizeFlag" ColumnName="IsCustomizeFlag" />
+                <ScalarProperty Name="BestSellerFlag" ColumnName="BestSellerFlag" />
+                <ScalarProperty Name="ForeignPrice" ColumnName="ForeignPrice" />
+                <ScalarProperty Name="ExtendedPaxPrice" ColumnName="ExtendedPaxPrice" />
+                <ScalarProperty Name="OrderByDisplay" ColumnName="OrderByDisplay" />
+                <ScalarProperty Name="EnabledFlag" ColumnName="EnabledFlag" />
+                <ScalarProperty Name="GroupBy" ColumnName="GroupBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inquiries">
+            <EntityTypeMapping TypeName="GoCebuDBModel.Inquiry">
+              <MappingFragment StoreEntitySet="Inquiries">
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

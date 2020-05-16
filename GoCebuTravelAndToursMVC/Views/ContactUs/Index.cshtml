@@ -1,0 +1,156 @@
+﻿@model GoCebuTravelAndToursMVC.Models.InquiryViewModel
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="map" class="container-fluid">
+    <iframe style="width: 100%; height: 500px;" id="gmap_canvas" src="https://maps.google.com/maps?q=cebu&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</div>
+
+
+
+<div id="contact-us" class="container">
+
+    <div class="row m-1">
+        <ol class="breadcrumb breadcrumb-arrow">
+
+            <li><i class="glyphicon glyphicon-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active"><span>Contact Us</span></li>
+
+        </ol>
+    </div>
+
+
+    <div class="row">
+        <div id="contacts" class="col-xs-12 col-md-5 col-lg-6">
+            <div class="row m-2">
+                <h3>Customize your tour, contact us now!</h3>
+                <hr />
+            </div>
+
+            <div class="row m-2">
+                <i class="fab fa-facebook-square" style="font-size: 25px; margin-right:10px;"></i>
+                <a style="color: inherit;" href="https://www.facebook.com/pg/GoCebuTravelandTours/" target="_blank">GoCebuTravelAndTours</a>
+
+            </div>
+            <div class="row m-2">
+                <i class="fas fa-phone-alt" style="font-size: 25px; margin-right:10px;"></i>
+                <p>
+                    Globe : +639173056635 <br />
+                    Smart : +639396071412 <br />
+                    Viber/WhatsApp : 639173056635
+                </p>
+            </div>
+            <div class="row m-2">
+                <i class="fas fa-envelope" style="font-size: 25px; margin-right:10px;"></i>
+                <p>info@gocebutour.com</p>
+            </div>
+
+            <div class="row m-2">
+                <i class="far fa-clock" style="font-size: 25px; margin-right:10px;"></i>
+                Monday - Sunday (8am to 10pm)
+            </div>
+        </div>
+
+        <div id="send-message" class="col-xs-12 col-md-7 col-lg-6">
+
+            <h3 style="text-align: center;">Send us a message</h3>
+
+            @using (Html.BeginForm("Index", "ContactUs", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @id = "lblName", @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @id = "lblContactNumber", @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Sender, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Sender, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.Sender, "", new { @id = "lblSender", @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-12 " })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @id = "lblMessage", @class = "text-danger" })
+                        <span id="inquiryValidation" class="text-danger field-validation-error"></span>
+                        <span id="isSent" class="text-success">@ViewBag.isSent</span>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input id="btnSubmit" type="submit" class="btn btn-lg btn-block btn-primary" value="Send" />
+                    </div>
+                </div>
+
+
+
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div id="about-us" class="row">
+        <div class="m-3">
+
+            <h3><strong>About Us</strong></h3>
+            <hr />
+            <p>
+                <strong><i>Go Cebu Travel And Tours</i></strong> is a duly registered business entity aimed at providing fun-filled tour experiences to white sandy beaches, lush mountain resorts, thrilling adventure parks and so much more here in the Queen City of the South!
+                <br /><br />
+                Founded by a pure blooded Cebuano Owner, who is an I.T. specialist for 7 years in a Private Logistic Company. He used to be a Taxi driver and Transportation Network Vehicle Services (TNVS) operator as his part-time income to sustain and meet his financial stability. Through the aid of the technology and wide knowledge experience in transportation, he takes the opportunity and focuses on the fastest growing tourism industry in Cebu. In addition, he scrutinizes every detail of the destination in order to provide a great satisfaction to his clients.
+                <br /><br />
+                <strong>OBJECTIVE</strong> <br />
+                To contribute memorable adventures and knowledge, meet the standards of our clients, and be proudly recognized in and out of the country.
+                <br /><br />
+                In meeting our objectives, we must make enhancement on the strategies and plans to be competitive enough in the market.
+                <br /><br />
+                <strong>WE</strong> aim to give an extraordinary moments and immeasurable happiness to both locals and foreigners. It is indeed a budget friendly service which makes you feel an elite individual during your extravagant travel.
+                <br /><br />
+                <strong>TRAVEL</strong>. We let you both learn and be entertained by the place's history and to its astonishing natural beauty.
+                <br /><br />
+                <strong>AS ONE</strong> of your travel buddy, we ensure you full respect and treat you as family in an alienated place. The memories that we can offer to you cannot be compared to the monetary cost it spends.
+                <br /><br />
+                Traveling is fun and easy with <i>
+                    GOCEBU TRAVEL AND TOURS.<br />
+                </i>
+                "We Travel as One"<br />
+
+            </p>
+
+
+        </div>
+
+    </div>
+</div>
+
+

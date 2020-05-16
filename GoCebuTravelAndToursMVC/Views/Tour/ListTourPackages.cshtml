@@ -1,0 +1,74 @@
+﻿@model IEnumerable<GoCebuTravelAndToursMVC.TourPackage>
+
+@{
+    ViewBag.Title = "Tour Packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    GoCebuDBEntities entities = new GoCebuDBEntities();
+}
+
+<div id="list-tour-package" class="container">
+
+    <div class="row" style="margin-left: inherit;">
+        <ol class="breadcrumb breadcrumb-arrow">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            @if (@ViewBag.groupBy == "all")
+            {
+                <li class="active"><span>Tour Packages</span></li>
+            }
+            else
+            {
+                <li class="active"><span>@ViewBag.groupBy Tour Packages</span></li>
+            }
+
+        </ol>
+
+    </div>
+
+    <div class="row" style="padding-top: 10px;">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="jumbotron shadow-sm">
+                    @{
+                        var isBestSellerClass = "";
+                        if(item.BestSellerFlag == true)
+                        {
+                            isBestSellerClass = "box";
+                        }
+                    }
+
+                    <div class="jumbotron-photo @isBestSellerClass">
+                        @if (item.BestSellerFlag == true)
+                        {
+                            <div class="ribbon"><span>BEST SELLER</span></div>
+                        }
+                        <img src="~/Content/img/tour/@Html.DisplayFor(T => item.ImgFileName)">
+                    </div>
+                    <div class="jumbotron-contents">
+                        <p class="package-title"> @Html.DisplayFor(modelItem => item.TourPackageName)</p>
+                        <p class="package-description">@Html.Raw(HttpUtility.HtmlDecode(item.TourPackageDescription))</p>
+
+                        <p class="text-info">
+                            As low as
+                            <strong>
+                                <span>&#8369;</span><span class="as-low-as">
+                                    @String.Format("{0:n}", @entities.TourPackagePrices.Where(T => T.TourPackageId == item.Id).Min(T => T.Amount))
+                                </span>
+
+                                / person
+                            </strong>
+                        </p>
+
+
+                        <a href='@Url.Action("TourPackage", "Tour", new { Id = item.Id, Package = item.TourPackageName })' class="btn btn-primary btn-details">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+@*@Html.ActionLink("See details", "BookTourPackage", "Tour", new { Id = item.Id })*@

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoCebuTravelAndToursMVC", "GoCebuTravelAndToursMVC\GoCebuTravelAndToursMVC.csproj", "{50B57AB6-8335-473B-A703-DF26891B8388}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GoCebuDB", "GoCebuDB\GoCebuDB.sqlproj", "{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50B57AB6-8335-473B-A703-DF26891B8388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B57AB6-8335-473B-A703-DF26891B8388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B57AB6-8335-473B-A703-DF26891B8388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B57AB6-8335-473B-A703-DF26891B8388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCE0AC6-A43B-4C93-962E-5B5A4553B2FF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96BFCE55-94AC-43D1-9D09-8B70D6CDF72F}
+	EndGlobalSection
+EndGlobal

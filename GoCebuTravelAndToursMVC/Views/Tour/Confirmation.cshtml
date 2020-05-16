@@ -1,0 +1,340 @@
+﻿@model  GoCebuTravelAndToursMVC.Models.TourPackageViewModel
+
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="confirmation">
+
+        <div class="row">
+
+            <div class="col-md-5">
+
+                <h4>Guest Information</h4>
+
+                <table class="table table-borderless">
+
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>@Model.BookingViewModel.GuestName</td>
+                        </tr>
+                        <tr>
+                            <td>Contact Number</td>
+                            <td>@Model.BookingViewModel.ContactNumber</td>
+                        </tr>
+                        <tr>
+                            <td>Email Address</td>
+                            <td>@Model.BookingViewModel.EmailAddress</td>
+                        </tr>
+
+                        <tr>
+                            <td>No. of Local guest</td>
+                            <td>@Model.BookingViewModel.TotalLocalGuest</td>
+                        </tr>
+                        <tr>
+                            <td>No. of Foreign guest</td>
+                            <td>@Model.BookingViewModel.TotalForeignGuest</td>
+                        </tr>
+                        <tr>
+                            <td>No. of Childrem guest(0-3 yrs old)</td>
+                            <td>@Model.BookingViewModel.TotalChildGuest</td>
+                        </tr>
+                        <tr>
+                            <td>Tour Start date</td>
+                            <td>@Convert.ToDateTime(Model.BookingViewModel.BookingStartDate).ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Tour End date</td>
+                            <td>@Convert.ToDateTime(Model.BookingViewModel.BookingEndDate).ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Pick Up Location</td>
+                            <td>@Model.BookingViewModel.PickUpLocation</td>
+                        </tr>
+                        <tr>
+                            <td>Special Request</td>
+                            <td>
+                                @if (Model.BookingViewModel.SpecialRequest != null)
+                                {
+                                    @Model.BookingViewModel.SpecialRequest
+                                }
+                                else
+                                {
+                                    <p>Not specified</p>
+                                }
+
+
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div> <!--end of user details-->
+
+            <div class="col-md-7">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                Details
+                            </th>
+                            <th>
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Model.BookingViewModel.TourPackageName
+                                @if (@Model.BookingViewModel.TotalLocalGuest > 0)
+                                {
+                                    <div style="padding-left: 2em;">
+                                        Local guest @Model.BookingViewModel.TotalLocalGuest x <span>&#8369;</span> @String.Format("{0:n}", @Model.BookingViewModel.TotalAmountEach)
+                                    </div>
+                                }
+                                @if (@Model.BookingViewModel.TotalForeignGuest > 0)
+                                {
+                                    <div style="padding-left: 2em;">
+                                        Foreign guest @Model.BookingViewModel.TotalForeignGuest x <span>&#8369;</span> @String.Format("{0:n}", @Model.BookingViewModel.TotalAmountEach)
+                                    </div>
+                                }
+
+
+                                @if (Model.TourBookingAddOns != null)
+                                {
+                                    if (Model.TourBookingAddOns.Count > 0)
+                                    {
+                                        <text>Add-ons (payment will be on the date of the tour)</text><br />
+                                        foreach (var addons in Model.TourBookingAddOns)
+                                        {
+                                            <div style="padding-left: 2em;">
+                                                @addons.TourPackageAddOnsName <span>&#8369;</span>@String.Format("{0:n}", addons.AddOnsPrice)
+                                            </div>
+
+                                        }
+                                    }
+                                }
+                            </td>
+                            <td>
+                                <br />
+                                    @if (Model.BookingViewModel.TotalLocalGuest != null && Model.BookingViewModel.TotalLocalGuest > 0)
+                                {
+                                        <div style="float:left;width:30%;text-align:left;"><span>&#8369;</span> </div>
+                                <div style="float:right;width:70%;text-align:right;">@String.Format("{0:n}", @Model.BookingViewModel.TotalLocalGuestAmount)</div>
+
+                          }
+                                
+                                @if (Model.BookingViewModel.TotalForeignGuest > 0)
+                                {
+                                    <div style="float:left;width:30%;text-align:left;"><span>&#8369;</span> </div>
+                                    <div style="float:right;width:70%;text-align:right;">@String.Format("{0:n}", (Model.BookingViewModel.TotalForeignAmount))</div>
+                                }
+
+
+
+                            </td>
+                        </tr>
+                        @*@if (Model.TourBookingAddOn != null)
+                            {
+                                if (Model.TourBookingAddOn.Count > 0)
+                                {
+                                    <tr>
+                                        <td>
+                                            Add-ons <br />
+                                            @foreach (var addons in Model.TourBookingAddOn)
+                                            {
+                                                <div style="padding-left: 2em;">
+                                                    @addons.TourPackageAddOnsName <span>&#8369;</span>@String.Format("{0:n}", addons.AddOnsPrice) each
+                                                </div>
+
+                                            }
+                                        </td>
+                                        <td>
+                                            <br/>
+                                            @foreach (var addons in Model.TourBookingAddOn)
+                                            {
+                                                <div style="float:left;width:30%;text-align:left;"><span>&#8369;</span></div>
+                                                <div style="float:right;width:70%;text-align:right;">@String.Format("{0:n}", addons.AddOnsPrice)</div>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }*@
+
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>
+                                <div style="float:left;width:30%;text-align:left;"><span>&#8369;</span> </div>
+                                <div style="float:right;width:70%;text-align:right;">@String.Format("{0:n}", Model.BookingViewModel.TotalAmount)</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Required Downpayment</td>
+                            <td>
+                                <div style="float:left;width:30%;text-align:left;"><span>&#8369;</span> </div>
+                                <div style="float:right;width:70%;text-align:right;">@String.Format("{0:n}", Model.BookingViewModel.DownPaymentAmount)</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    @using (Html.BeginForm("Confirmation", "Tour", FormMethod.Post, new { @id = "confirmation-form", @class = "p-1 rounded", @onsubmit = "return ValidateConfirmationForm()" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.BookingViewModel.Id, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.HiddenFor(model => model.BookingViewModel.TourPackageId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.TourPackageName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.HiddenFor(model => model.BookingViewModel.TotalLocalGuest, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.TotalChildGuest, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.TotalForeignGuest, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.BookingStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.BookingEndDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.BookingViewModel.PickUpLocation, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                    <div class="col-md-8">
+                        <h5>Payment Options<span style="color: red;">*</span></h5>
+
+                        <p id="note-downpayment" class="text-info">
+                            To confirm your booking, you will be required to pay 25% down payment of the total amount.
+                        </p>
+
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(T => Model.BookingViewModel.PaymentOptions, "banktransfer", new { @id = "banktransfer" })
+                            Bank transfer (BPI, EastWest, Security Bank, etc)
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(T => Model.BookingViewModel.PaymentOptions, "moneytransfer", new { @id = "moneytransfer" })
+                            Pera Padala (Palawan, MLLuillier, Cebuana, etc)
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(T => Model.BookingViewModel.PaymentOptions, "creditcard", new { @id = "paypal" })
+                            Credit Card via PayPal
+                        </label>
+
+                        <p id="form-error" style="color: red;"></p>
+
+                        <p>
+                            I read and agree with the <a href="#" data-target="#terms-conditions" data-toggle="modal">terms and condition</a>.
+                        </p>
+                        <button type="submit" name="btnSubmit" class="btn btn-primary">Confirmed</button>
+                        @*<a href="@Url.Action("Index", "Home")" class="btn btn-warning">Cancel</a>*@
+                    </div>
+
+                        @section scripts{
+                            <script type="text/javascript">
+
+                                function ValidateConfirmationForm() {
+                                    var formError = document.getElementById("form-error");
+                                    formError.innerText = "";
+
+                                    var bankTransfer = document.getElementById("banktransfer");
+                                    var moneyTransfer = document.getElementById("moneytransfer");
+                                    var paypal = document.getElementById("paypal");
+
+                                    if (!bankTransfer.checked && !moneyTransfer.checked && !paypal.checked) {
+                                        formError.innerText = "Select mode of payment.";
+                                    }
+                                }
+
+                            </script>
+
+
+
+                        }
+
+
+
+                    }
+
+                </div>
+
+                <div class="confirm-booking">
+
+                    <div tabindex="-1" class="modal fade" id="terms-conditions" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                </div>
+                                <div class="modal-body">
+                                    <h4>TERMS AND CONDITIONS</h4>
+                                    <p>
+                                        <br />
+                                        PAYMENT AND RESERVATION <br />
+                                        25% minimum down payment of the total package is required to process the reservation through bank deposit, money<br />
+                                        transfer or credit card via PayPal with 6% transaction fee.<br />
+                                        Once down payment is received, your booking is secured and you will receive a confirmation from us.<br />
+                                        Price is guaranteed upon receipt of the down payment.<br />
+                                        Remaining balance will be collected upon pickup by our authorize driver, tour coordinator/guide or any representative<br />
+                                        from GoCebu Travel and Tours.<br />
+                                        Strictly no down payment, no confirmation of booking.<br /><br />
+                                        CANCELLATION AND REFUND<br />
+                                        If booking cancellation received less than 7 days prior to tour date, 50% of the required down payment will be<br />
+                                        refunded. Cancellation received less than 72 hours prior to tour date, required down payment will not be refunded.<br />
+                                        In case you have to withdraw from tour after it has started due to some reasons, we regret to inform you that the<br />
+                                        unused transport, entrance fees, accommodations and all specified in the package inclusion will not be refunded.<br />
+                                        GoCebu Travel and Tours has the right to change and/or cancel itineraries without prior notice to ensure safety and<br />
+                                        better service. Likewise, the agency, and all persons representing GoCebu Travel and Tours shall not be held<br />
+                                        responsible or liable to issue refund / any form of compensation for failure to execute the travel arrangements due to<br />
+                                        health condition, unpredictable nature, inclement weather and other factors that are beyond our control.<br />
+                                        Refund minus any charges we incur i.e. 10% administrative fees, bank fees, transfer fees, accommodation & etc.<br />
+                                        Refunds will be process within 14 working days.<br /><br />
+                                        BOOKING CHANGES<br />
+                                        Guest are still liable to settle the full amount of the package for no show/cancellation of other members of the group.<br />
+                                        Necessary charges or re-quote may apply for any amendment made to the confirmed reservation or while the tour has<br />
+                                        started. Charges incur (i.e. administrative fee, accommodation, transportations & etc.).<br /><br />
+                                        PRICE AND DISCOUNT<br />
+                                        All rates are fixed at the time of booking and generally practices a “No Hidden Charges.” The only exception will be an<br />
+                                        increase in our costs arising as the result of any government action. GoCebu Travel and Tours reserve the right to<br />
+                                        change the price for any additional fees that may have incur (i.e. government taxes, hotel surcharges or changes in<br />
+                                        rates).<br />
+                                        Senior Citizen and/or PWD 5% discounts will apply based on package rate per person. Not applicable for any add-ons<br />
+                                        (i.e. GoPro & others stated in the add-ons). Strictly no Senior/PWD I.D., no discount.<br />
+                                        ACCOMMODATION<br />
+                                        No refund for the accommodation shall be given for any changes or cancellation received once booking is confirmed.<br />
+                                        Guests are still responsible to follow hotel policies.<br />
+                                        Issues or complaints concerning the hotel / accommodation must be directed to hotel’s representative for proper<br />
+                                        assistance.<br /><br />
+                                        FITNESS<br />
+                                        All tour Guests must be in good physical and mental condition to join all activities specified in the tour package.<br />
+                                        All Guests must attend briefing / orientation and a signed waiver must be furnished before the start of activity.<br />
+                                        GoCebu Travel and Tours reserves the right to cancel without refund for any member of the group found not<br />
+                                        physically fit (i.e. not feeling well, drunk & etc.) while the activity or tour has started.<br />
+                                        IMPORTANT NOTICE: During the journey if someone asks for extra money or charges, you may inform us and we will not<br />
+                                        be responsible if you pay the amount without our concern.<br /><br />
+                                        ACCEPTANCE OF AGREEMENT<br />
+                                        By confirming registration and down payment, GOCEBU TRAVEL & TOURS accepts that Guests is agreeing to all terms<br />
+                                        and conditions stated above.<br />
+                                        "We Travel As One"
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,60 @@
+﻿@model GoCebuTravelAndToursMVC.Models.ListTourPackageViewModel
+@{
+    GoCebuDBEntities entities = new GoCebuDBEntities();
+}
+<div id="list-tour-package" class="container">
+
+    <h3>Day Tour Packages </h3>
+
+    <hr />
+
+    <div class="row" style="padding-top: 10px;">
+
+        @foreach (var item in Model.TourPackages)
+        {
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="jumbotron">
+                    @{
+                        var isBestSellerClass = "";
+                        if (item.BestSellerFlag == true)
+                        {
+                            isBestSellerClass = "box";
+                        }
+                    }
+
+                    <div class="jumbotron-photo @isBestSellerClass">
+                        @if (item.BestSellerFlag == true)
+                        {
+                            <div class="ribbon"><span>BEST SELLER</span></div>
+                        }
+                        <img src="~/Content/img/tour/@Html.DisplayFor(T => item.ImgFileName)">
+                    </div>
+
+                    <div class="jumbotron-contents">
+                        <p class="package-title"> @Html.DisplayFor(modelItem => item.TourPackageName)</p>
+                        <p class="package-description">@Html.Raw(HttpUtility.HtmlDecode(item.TourPackageDescription))</p>
+
+                        <p class="text-info">
+                            As low as
+                            <strong>
+                                <span>&#8369;</span><span class="as-low-as">
+                                    @String.Format("{0:n}", @entities.TourPackagePrices.Where(T => T.TourPackageId == item.Id).Min(T => T.Amount))
+                                </span>
+
+                                / person
+                            </strong>
+                        </p>
+                        <a href='@Url.Action("TourPackage", "Tour", new { Id = item.Id, Package = item.TourPackageName})' class="btn btn-primary btn-details">Learn more</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        }
+
+    </div>
+    <a href='@Url.Action("ListTourPackages", "Tour", new { groupBy = "all"  })'>See all tour packages</a>
+
+</div>

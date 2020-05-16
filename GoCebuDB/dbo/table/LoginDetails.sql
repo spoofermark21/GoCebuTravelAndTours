@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[LoginDetails]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [IPAddress] VARCHAR(100) NULL
+)

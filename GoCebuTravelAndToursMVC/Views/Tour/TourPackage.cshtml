@@ -1,0 +1,378 @@
+﻿@model GoCebuTravelAndToursMVC.Models.TourPackageViewModel
+
+@{
+    ViewBag.Title = "Book Tour Package";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div id="tour-package">
+        <div class="row" style="padding-left: 10px;">
+            <ol class="breadcrumb breadcrumb-arrow">
+
+                <li><i class="glyphicon glyphicon-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+                @{
+                    if (ViewBag.groupBy == null)
+                    {
+                        <li class="active"><span>Tour Package</span></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("ListTourPackages", "Tour", new { groupBy = ViewBag.GroupBy })">@ViewBag.GroupBy Tour Packages</a> </li>
+                        <li class="active"><span>@Model.TourPackage.TourPackageName</span></li>
+                    }
+                }
+
+            </ol>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12 col-md-7 col-lg-7">
+                <div class="tour-description">
+                    <p style="font-size: 28px;">@Model.TourPackage.TourPackageName Package</p>
+                    <hr />
+                </div>
+
+
+                <div class="row">
+
+                    <div class="prices col-md-12">
+
+                        <table class="table table-bordered" cellpadding="0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Pax </th>
+                                    <th>Amount </th>
+                                    <th>Inclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    bool isInclusionDisplayed = false;
+                                    foreach (var price in Model.TourPackagePrices)
+                                    {
+                                        <tr>
+                                            <td width="10%">
+                                                @price.Pax
+
+                                                @if (@Model.MaxPax == @price.Pax)
+                                                {
+                                                    <span>or more</span>
+                                                }
+                                            </td>
+                                            <td style="text-align: left;" width="40%"><span>&#8369;</span>@String.Format("{0:n}", price.Amount) / person</td>
+
+                                            @if (!isInclusionDisplayed)
+                                            {
+                                                <td rowspan="@Model.TourPackagePrices.Count">
+                                                    @Html.Raw(HttpUtility.HtmlDecode(@Model.TourPackage.InclusionDetails))
+                                                </td>
+                                                isInclusionDisplayed = true;
+                                            }
+
+                                        </tr>
+                                    }
+
+
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="itinerary">
+                    @*<p style="font-size: 24px;">Package Details</p>*@
+                    <hr />
+                    <p>
+                        @*<span style="font-size: 18px !important;">Itinerary</span>
+                        <br />
+                        <br />*@
+                        @Html.Raw(@Model.TourPackage.TourItineraryDetails)
+                    </p>
+                </div>
+
+                <div class="note">
+
+                    <p>
+                        @Html.Raw(HttpUtility.HtmlDecode(@Model.TourPackage.AdditionalDetails))
+                    </p>
+                </div>
+
+            </div>
+
+            <!--#region Form-->
+            <div class="col-xs-12 col-md-5 col-lg-5">
+                <p class="reservation-header">Reservation Form</p>
+                <hr/>
+                @using (Html.BeginForm("TourPackage", "Tour", FormMethod.Post, new { @id = "booking-form", @class = "rounded", @onsubmit = "return ValidateReservationForm()" }))
+                {
+                    <div>
+                        @*<p style="font-size: 24px; text-align: left; margin-left: 15px;">Reservation Form</p>*@
+
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.BookingViewModel.TourPackageId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.BookingViewModel.TourPackageName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.HiddenFor(model => model.BookingViewModel.TourDurationInHours, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.GuestName, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.GuestName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.ContactNumber, htmlAttributes: new { @class = "control-label col-md-12 " })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.ContactNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.EmailAddress, htmlAttributes: new { @class = "control-label col-md-12 " })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.EmailAddress, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.BookingStartDate, htmlAttributes: new { @class = "control-label col-md-12 " })
+                            <div class="col-md-12">
+
+                                @Html.EditorFor(model => model.BookingViewModel.BookingStartDate, new { htmlAttributes = new { @id = "startDate", @class = "form-control datepicker", @readonly = "readonly", @style = "cursor:pointer; background-color: #FFFFFF;" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.BookingStartDate, "", new { @id = "tourDateValidation", @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.TotalLocalGuest, htmlAttributes: new { @class = "control-label col-md-12 " })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.TotalLocalGuest, new { htmlAttributes = new { @class = "form-control", @onchange = "return checkLocalGuest()" } })
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.TotalLocalGuest, "", new { @id = "Booking_LocalValidation", @class = "text-danger" })
+                                <span id="localValidation" class="text-danger field-validation-error"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.TotalForeignGuest, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.TotalForeignGuest, new { htmlAttributes = new { @class = "form-control", @onchange = "return checkForeignGuest()" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.TotalForeignGuest, "", new { @id = "Booking_ForeignValidation", @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.TotalChildGuest, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.TotalChildGuest, new { htmlAttributes = new { @class = "form-control", @onchange = "return checkChildren()" } })
+                                <small>0-3 yrs old</small>
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.TotalChildGuest, "", new { @id = "BookingViewModel_TotalChildGuest", @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.BookingViewModel.PickUpLocation, htmlAttributes: new { @class = "control-label col-md-12 " })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.PickUpLocation, new { htmlAttributes = new { @id = "btnPickUpLocation", @class = "form-control" } })
+                                <small>If from airport, provide the flight number.</small>
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.PickUpLocation, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BookingViewModel.SpecialRequest, htmlAttributes: new { @class = "control-label col-md-12 " })
+
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.BookingViewModel.SpecialRequest, new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.ValidationMessageFor(model => model.BookingViewModel.SpecialRequest, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-md-12">
+
+                                @if (Model.TourPackageAddOns.Count > 0)
+                                {
+                                    <p>Add-ons (Optional)</p>
+
+
+                                    foreach (var item in Model.TourPackageAddOns)
+                                    {
+
+                                        <input type="checkbox" class="icheckbox_flat" id='checkbox-@item.Id' name='tourPackageAddOnsIds' value='@item.Id'>
+                                        <label for="checkbox-@item.Id" class="">@*<span>&#8369;</span>@String.Format("{0:n}", @item.Price) -*@ @Html.DisplayFor(T => item.Name) </label>
+                                        <br />
+                                    }
+
+
+
+                                }
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-md-12">
+                                <input id="btnSubmit" type="submit" class="btn btn-block btn-primary" value="Proceed" style="margin-bottom: 10px !important;" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            </div>
+            <!--#endregion-->
+
+        </div>
+
+
+    </div> <!--end of tour package -->
+
+    @if (Model.TourGalleries.Count > 0)
+    {
+        <h3>Gallery</h3>
+        <hr />
+        <div id="img-package" class="row">
+
+            @foreach (var item in Model.TourGalleries)
+            {
+
+                <div class="col-md-3 col-lg-4" style="text-align: center;">
+                    <img class="img img-fluid img-rounded img-thumbnail" src="~/Content/img/tour/@item.ImgFileName" />
+                    <h4>@item.Name</h4>
+                </div>
+
+
+
+            }
+        </div>
+    }
+
+</div>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+@section scripts {
+
+    <script>
+
+        var dateToday = new Date();
+
+        var localValidation = document.getElementById("localValidation");
+
+        localValidation.style.visibility = "hidden";
+
+        $(function () {
+            $("#startDate").datepicker({
+                numberOfMonths: 1,
+                dateFormat: 'mm/dd/yy',
+                //showOn: 'both',
+                //showButtonPanel: true,
+                minDate: dateToday
+            });
+        });
+
+        function ValidateReservationForm() {
+            var localGuest = document.getElementById("BookingViewModel_TotalLocalGuest");
+            var foreignGuest = document.getElementById("BookingViewModel_TotalForeignGuest");
+            var children = document.getElementById("BookingViewModel_TotalChildGuest");
+
+            if (localGuest.value == "")
+                localGuest.value = 0;
+
+            if (foreignGuest.value == "")
+                foreignGuest.value = 0;
+
+            if (children.value == "")
+                children.value = 0;
+
+            if (localGuest.value < 1 && foreignGuest.value < 1) {
+
+                localValidation.innerText = "Specify number of guest";
+                localValidation.style.visibility = "visible";
+
+                return false;
+            } else {
+                localValidation.innerText = "";
+                localValidation.style.visibility = "hidden";
+            }
+
+            console.log("Local Guest " + localGuest.value);
+            console.log("Foreign Guest " + foreignGuest.value);
+
+        }
+
+        function checkGuest() {
+            var localGuest = document.getElementById("BookingViewModel_TotalLocalGuest");
+            var foreignGuest = document.getElementById("BookingViewModel_TotalForeignGuest");
+
+            if (localGuest.value < 1 && foreignGuest.value < 1) {
+
+                localValidation.innerText = "Specify number of guest";
+                localValidation.style.visibility = "visible";
+            } else {
+                localValidation.innerText = "";
+                localValidation.style.visibility = "hidden";
+            }
+        }
+
+        function checkLocalGuest() {
+            var localGuest = document.getElementById("BookingViewModel_TotalLocalGuest");
+
+            checkGuest();
+
+            if (localGuest.value == "") {
+                localGuest.value = 0;
+            }
+        }
+
+        function checkForeignGuest() {
+            var foreignGuest = document.getElementById("BookingViewModel_TotalForeignGuest");
+
+            checkGuest();
+
+            if (foreignGuest.value == "") {
+                foreignGuest.value = 0;
+            }
+        }
+
+        function checkChildren() {
+            var children = document.getElementById("BookingViewModel_TotalChildGuest");
+
+            if (children.value == "") {
+                children.value = 0;
+            }
+        }
+
+
+    </script>
+
+}

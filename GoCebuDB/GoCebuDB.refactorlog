@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="8396b04f-1e6a-470d-a9b7-3b72af79871f" ChangeDateTime="06/15/2019 07:26:28">
+    <Property Name="ElementName" Value="[dbo].[tour_packages].[IsForeignFlagg]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tour_packages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsForeignFlag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e46ebaac-e3fb-4adb-ad11-68d86ff64da4" ChangeDateTime="06/15/2019 07:29:06">
+    <Property Name="ElementName" Value="[dbo].[PackageTourPrice].[TotalAmount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PackageTourPrice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Amount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4f536b74-d0d6-4305-8a0c-689951699b1a" ChangeDateTime="06/15/2019 07:33:36">
+    <Property Name="ElementName" Value="[dbo].[TourGallery].[TourPackageId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourGallery]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourPackageID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4d7e1694-e0b7-4eff-b40e-e48b6c440177" ChangeDateTime="06/15/2019 07:33:42">
+    <Property Name="ElementName" Value="[dbo].[TourGallery].[TourPackageID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourGallery]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourPackageId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ed2e8d2d-1211-45a8-a6da-28e7a0f3f692" ChangeDateTime="07/27/2019 02:26:14">
+    <Property Name="ElementName" Value="[dbo].[TourPackages].[Group]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GroupBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3b6c1168-f3a5-4d48-a11a-5816e6097a2c" ChangeDateTime="07/29/2019 14:30:22">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[TourPackageid]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourPackageId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6cdc34fe-6000-4c2c-a45d-6d542ec27ba6" ChangeDateTime="07/29/2019 14:31:35">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[EnabledFlag]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Price" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a1573bc1-d32f-47dd-a355-88d0a12499fc" ChangeDateTime="07/29/2019 14:31:41">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[Price]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="enabled" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="68550964-ad28-4bef-8f71-7ba839fbfb93" ChangeDateTime="07/29/2019 14:31:45">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[enabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EnabledFlag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="929112ea-6e32-4f26-8c2b-cb71de47f38b" ChangeDateTime="07/29/2019 14:32:41">
+    <Property Name="ElementName" Value="[dbo].[TourBookingAddOns].[TourPackageAddOnsID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourBookingAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourPackageAddOnsId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1e0214d7-3fec-4834-82b8-d4196f246fd8" ChangeDateTime="08/04/2019 02:11:00">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalGuest]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalNumberOfGuest" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="800192db-d627-4336-8a38-c786505301df" ChangeDateTime="08/04/2019 02:11:10">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalNumberOfGuest]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NumberOfAdults" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="60cd9199-e7bc-4d81-812e-4b99d72f4c66" ChangeDateTime="08/04/2019 02:11:16">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[NumberOfAdults]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GuestAdults" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="702fc904-ec00-4d2a-81b8-b3f76265a4e5" ChangeDateTime="08/15/2019 13:48:41">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[GuestAdults]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalGuestAdults" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="478e5fad-5177-4a7d-8475-48dd9270e763" ChangeDateTime="08/15/2019 13:48:45">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[GuestChild]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalGuestChilds" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a4b9803-fb74-4fe3-a4e8-d30915102e48" ChangeDateTime="08/15/2019 13:52:20">
+    <Property Name="ElementName" Value="[dbo].[TourPackages].[TourDuration]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourDurationInDays" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="053bcd5c-e47b-4902-ac26-00296c7fd9bc" ChangeDateTime="09/20/2019 11:53:28">
+    <Property Name="ElementName" Value="[dbo].[TourPackages].[LastUpdateBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastUpdatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="af688eed-37b3-4eea-acb9-46b9a6a5943a" ChangeDateTime="09/20/2019 11:57:25">
+    <Property Name="ElementName" Value="[dbo].[TourPackages].[TourAdditionalDetails]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AdditionalDetails" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="20c7d174-f527-4bf2-a503-8b11e57ba877" ChangeDateTime="09/20/2019 11:58:08">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[CreatedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="91d23ef0-97fb-4998-8d57-dee063fb80e3" ChangeDateTime="09/20/2019 11:58:35">
+    <Property Name="ElementName" Value="[dbo].[TourPackageAddOns].[UpdatedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackageAddOns]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastUpdatedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="45f1a99b-6ffd-4746-87e5-cf303783ff2e" ChangeDateTime="09/20/2019 12:03:02">
+    <Property Name="ElementName" Value="[dbo].[Reviews].[Enabled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Reviews]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EnabledFlag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ae7af55b-5a63-492c-b81b-74e5a81921ad" ChangeDateTime="09/20/2019 12:03:55">
+    <Property Name="ElementName" Value="[dbo].[Reviews].[Link]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Reviews]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ReviewLink" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="011b7813-f654-438d-ab9e-03dcd3e0f67c" ChangeDateTime="09/20/2019 12:05:20">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalForeignGuest]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalGuestForeign" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c6536ddc-c495-4c24-b368-fbec612cbb5c" ChangeDateTime="09/20/2019 12:05:30">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalGuestAdults]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalLocalGuest" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="314250de-67d6-411a-9687-d2d720cd47d2" ChangeDateTime="09/20/2019 12:05:36">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalGuestChilds]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalChildGuest" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a776c765-e6e0-4df1-8f63-e3207dad2af0" ChangeDateTime="09/20/2019 12:05:42">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[TotalGuestForeign]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalForeignGuest" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="01d62000-8a7a-45ea-a4d2-0a201247b939" ChangeDateTime="09/20/2019 12:08:34">
+    <Property Name="ElementName" Value="[dbo].[Bookings].[DownPayment]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bookings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DownPaymentAmount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a05f6591-436d-4974-859a-1c058a356981" ChangeDateTime="09/20/2019 12:10:32">
+    <Property Name="ElementName" Value="[dbo].[PaymentTransaction].[LastUpdatedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PaymentTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="099d8cf1-ad08-48ec-bdc1-17dece4fbc17" ChangeDateTime="09/20/2019 12:10:48">
+    <Property Name="ElementName" Value="[dbo].[PaymentTransaction].[LastUpdatedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PaymentTransaction]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastUpdatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="144c9d01-e66d-4ed2-ba23-434bb010441c" ChangeDateTime="10/20/2019 12:46:01">
+    <Property Name="ElementName" Value="[dbo].[Inquiries].[Contact Number]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Inquiries]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ContactNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a2e9d47b-3fe3-4085-b91e-9c9ede33b86d" ChangeDateTime="10/26/2019 13:34:45">
+    <Property Name="ElementName" Value="[dbo].[TourPackages].[TourDurationInDays]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TourPackages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TourDurationInHours" />
+  </Operation>
+</Operations>
